@@ -16,10 +16,18 @@ namespace Web2012023015School.Models
         public DbSet<Photos> Photos { get; set; }
         public DbSet<RecruitStudents> RecruitStudents { get; set; }
         public DbSet<SchoolInfo> SchoolInfo { get; set; }
+        public DbSet<GuestBook> GuestBook { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<GuestBook>(e =>
+            {
+                //添加留言板的Time的索引
+                    e.Index(x => x.Time);
+               
+            });
 
             builder.Entity<Inform>(e =>
             {
